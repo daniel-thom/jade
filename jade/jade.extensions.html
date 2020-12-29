@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>jade.extensions package &mdash; jade 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="jade.extensions.demo package" href="jade.extensions.demo.html" />
+    <link rel="prev" title="jade.cli package" href="jade.cli.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> jade
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#computer-or-hpc-with-conda">Computer or HPC with conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html#computer-with-docker">Computer with docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#hpc-configuration">HPC Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#configuring-jobs">Configuring Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#cli-execution">CLI Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#job-results">Job Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html#debugging">Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pipeline.html">Batch Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline.html#create-the-pipeline">Create the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline.html#customize-the-config">Customize the config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline.html#submit-the-pipeline">Submit the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pipeline.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced_usage.html">Advanced Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_usage.html#extending-jade">Extending JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_usage.html#generic-command-extension">Generic Command Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_usage.html#demo-extension">Demo Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../advanced_usage.html#post-process">Post-process</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Dev &amp; Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../jade.html">jade</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">jade</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="jade.html">jade package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design.html">JADE Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../design/classes.html">JADE Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../build_docs.html">Building the Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../build_docs.html#build-locally">Build locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_docs.html#push-to-github">Push to GitHub</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">jade</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../jade.html">jade</a> &raquo;</li>
+        
+          <li><a href="modules.html">jade</a> &raquo;</li>
+        
+          <li><a href="jade.html">jade package</a> &raquo;</li>
+        
+      <li>jade.extensions package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/jade/jade.extensions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jade-extensions-package">
+<h1>jade.extensions package<a class="headerlink" href="#jade-extensions-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="jade.extensions.demo.html">jade.extensions.demo package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.demo.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.demo.html#module-jade.extensions.demo.autoregression_configuration">jade.extensions.demo.autoregression_configuration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.demo.html#module-jade.extensions.demo.autoregression_execution">jade.extensions.demo.autoregression_execution module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.demo.html#module-jade.extensions.demo.autoregression_inputs">jade.extensions.demo.autoregression_inputs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.demo.html#module-jade.extensions.demo.autoregression_parameters">jade.extensions.demo.autoregression_parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.demo.html#module-jade.extensions.demo.cli">jade.extensions.demo.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.demo.html#module-jade.extensions.demo.create_merge_pred_gdp">jade.extensions.demo.create_merge_pred_gdp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.demo.html#module-jade.extensions.demo.merge_pred_gdp">jade.extensions.demo.merge_pred_gdp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.demo.html#module-jade.extensions.demo">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="jade.extensions.generic_command.html">jade.extensions.generic_command package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.generic_command.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.generic_command.html#module-jade.extensions.generic_command.cli">jade.extensions.generic_command.cli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.generic_command.html#module-jade.extensions.generic_command.generic_command_configuration">jade.extensions.generic_command.generic_command_configuration module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.generic_command.html#module-jade.extensions.generic_command.generic_command_execution">jade.extensions.generic_command.generic_command_execution module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.generic_command.html#module-jade.extensions.generic_command.generic_command_inputs">jade.extensions.generic_command.generic_command_inputs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.generic_command.html#module-jade.extensions.generic_command.generic_command_parameters">jade.extensions.generic_command.generic_command_parameters module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade.extensions.generic_command.html#module-jade.extensions.generic_command">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-jade.extensions.registry">
+<span id="jade-extensions-registry-module"></span><h2>jade.extensions.registry module<a class="headerlink" href="#module-jade.extensions.registry" title="Permalink to this headline">¶</a></h2>
+<p>Manages extensions registered with JADE.</p>
+<dl class="py class">
+<dt id="jade.extensions.registry.ExtensionClassType">
+<em class="property">class </em><code class="sig-prename descclassname">jade.extensions.registry.</code><code class="sig-name descname">ExtensionClassType</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#ExtensionClassType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.ExtensionClassType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Possible values for computational sequencing mode</p>
+<dl class="py attribute">
+<dt id="jade.extensions.registry.ExtensionClassType.CLI">
+<code class="sig-name descname">CLI</code><em class="property"> = 'cli_module'</em><a class="headerlink" href="#jade.extensions.registry.ExtensionClassType.CLI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="jade.extensions.registry.ExtensionClassType.CONFIGURATION">
+<code class="sig-name descname">CONFIGURATION</code><em class="property"> = 'config_class'</em><a class="headerlink" href="#jade.extensions.registry.ExtensionClassType.CONFIGURATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="jade.extensions.registry.ExtensionClassType.EXECUTION">
+<code class="sig-name descname">EXECUTION</code><em class="property"> = 'exec_class'</em><a class="headerlink" href="#jade.extensions.registry.ExtensionClassType.EXECUTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="jade.extensions.registry.Registry">
+<em class="property">class </em><code class="sig-prename descclassname">jade.extensions.registry.</code><code class="sig-name descname">Registry</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">registry_filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages extensions registered with JADE.</p>
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.add_logger">
+<code class="sig-name descname">add_logger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.add_logger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.add_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a package name to the logging registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>package_name</strong> (<em>str</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.remove_logger">
+<code class="sig-name descname">remove_logger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">package_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.remove_logger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.remove_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a package name from the logging registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>package_name</strong> (<em>str</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.list_loggers">
+<code class="sig-name descname">list_loggers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.list_loggers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.list_loggers" title="Permalink to this definition">¶</a></dt>
+<dd><p>List the package names registered to be logged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.show_loggers">
+<code class="sig-name descname">show_loggers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.show_loggers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.show_loggers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the package names registered to be logged.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.get_extension_class">
+<code class="sig-name descname">get_extension_class</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">extension_name</span></em>, <em class="sig-param"><span class="n">class_type</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.get_extension_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.get_extension_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the class associated with the extension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extension_name</strong> (<em>str</em>) -- </p></li>
+<li><p><strong>class_type</strong> (<a class="reference internal" href="#jade.extensions.registry.ExtensionClassType" title="jade.extensions.registry.ExtensionClassType"><em>ExtensionClassType</em></a>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="jade.html#jade.exceptions.InvalidParameter" title="jade.exceptions.InvalidParameter"><strong>InvalidParameter</strong></a> -- Raised if the extension is not registered.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.is_registered">
+<code class="sig-name descname">is_registered</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">extension_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.is_registered"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.is_registered" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the extension is registered</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.list_extensions">
+<code class="sig-name descname">list_extensions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.list_extensions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.list_extensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of registered extensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list of dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.register_extension">
+<code class="sig-name descname">register_extension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">extension</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.register_extension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.register_extension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Registers an extension in the registry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extension</strong> (<em>dict</em>) -- </p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="jade.html#jade.exceptions.InvalidParameter" title="jade.exceptions.InvalidParameter"><strong>InvalidParameter</strong></a> -- Raised if the extension is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.registry_filename">
+<em class="property">property </em><code class="sig-name descname">registry_filename</code><a class="headerlink" href="#jade.extensions.registry.Registry.registry_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the filename that stores the registry.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.reset_defaults">
+<code class="sig-name descname">reset_defaults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.reset_defaults"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.reset_defaults" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the registry to its default values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.show_extensions">
+<code class="sig-name descname">show_extensions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.show_extensions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.show_extensions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the registered extensions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="jade.extensions.registry.Registry.unregister_extension">
+<code class="sig-name descname">unregister_extension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">extension_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/jade/extensions/registry.html#Registry.unregister_extension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#jade.extensions.registry.Registry.unregister_extension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unregisters an extension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extension_name</strong> (<em>str</em>) -- </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-jade.extensions">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-jade.extensions" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="jade.extensions.demo.html" class="btn btn-neutral float-right" title="jade.extensions.demo package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="jade.cli.html" class="btn btn-neutral float-left" title="jade.cli package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, NREL
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

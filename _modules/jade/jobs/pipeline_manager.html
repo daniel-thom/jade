@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>jade.jobs.pipeline_manager &mdash; jade 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> jade
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#computer-or-hpc-with-conda">Computer or HPC with conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../installation.html#computer-with-docker">Computer with docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorial.html#hpc-configuration">HPC Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorial.html#configuring-jobs">Configuring Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorial.html#cli-execution">CLI Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorial.html#job-results">Job Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorial.html#debugging">Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pipeline.html">Batch Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipeline.html#create-the-pipeline">Create the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipeline.html#customize-the-config">Customize the config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipeline.html#submit-the-pipeline">Submit the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pipeline.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../advanced_usage.html">Advanced Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced_usage.html#extending-jade">Extending JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced_usage.html#generic-command-extension">Generic Command Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced_usage.html#demo-extension">Demo Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../advanced_usage.html#post-process">Post-process</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Dev &amp; Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../jade.html">jade</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../jade/modules.html">jade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../jade/jade.html">jade package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design.html">JADE Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../design/classes.html">JADE Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build_docs.html">Building the Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../build_docs.html#build-locally">Build locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../build_docs.html#push-to-github">Push to GitHub</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">jade</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>jade.jobs.pipeline_manager</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for jade.jobs.pipeline_manager</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Manages the execution of a pipeline of JADE configurations.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">jade.exceptions</span> <span class="kn">import</span> <span class="n">ExecutionError</span>
+<span class="kn">from</span> <span class="nn">jade.jobs.job_submitter</span> <span class="kn">import</span> <span class="n">DEFAULTS</span>
+<span class="kn">from</span> <span class="nn">jade.result</span> <span class="kn">import</span> <span class="n">Result</span><span class="p">,</span> <span class="n">serialize_result</span>
+<span class="kn">from</span> <span class="nn">jade.utils.subprocess_manager</span> <span class="kn">import</span> <span class="n">run_command</span>
+<span class="kn">from</span> <span class="nn">jade.utils.timing_utils</span> <span class="kn">import</span> <span class="n">timed_info</span>
+<span class="kn">from</span> <span class="nn">jade.utils.utils</span> <span class="kn">import</span> <span class="n">dump_data</span><span class="p">,</span> <span class="n">load_data</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PipelineManager"><a class="viewcode-back" href="../../../jade/jade.jobs.html#jade.jobs.pipeline_manager.PipelineManager">[docs]</a><span class="k">class</span> <span class="nc">PipelineManager</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Manages the execution of a pipeline of JADE configurations.&quot;&quot;&quot;</span>
+
+    <span class="n">CONFIG_FILENAME</span> <span class="o">=</span> <span class="s2">&quot;pipeline.toml&quot;</span>
+    <span class="n">STATUS_FILENAME</span> <span class="o">=</span> <span class="s2">&quot;pipeline_status.toml&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">output</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">CONFIG_FILENAME</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config_file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_config_file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config</span><span class="p">[</span><span class="s2">&quot;stages&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_status_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">STATUS_FILENAME</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_status_info</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;current_stage_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span><span class="p">,</span>
+            <span class="s2">&quot;stages&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;output_directory&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="p">,</span>
+            <span class="s2">&quot;config_file&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_config_file</span><span class="p">,</span>
+        <span class="p">}</span>
+
+<div class="viewcode-block" id="PipelineManager.create"><a class="viewcode-back" href="../../../jade/jade.jobs.html#jade.jobs.pipeline_manager.PipelineManager.create">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="n">auto_config_cmds</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">submit_params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a pipeline with multiple Jade configurations.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;stages&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+        <span class="n">user_submit_params</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">submit_params</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">submit_params</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="s2">&quot;=&quot;</span> <span class="ow">in</span> <span class="n">option</span><span class="p">:</span>
+                    <span class="n">param</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">option</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">param</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">option</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+
+                <span class="k">if</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;--per-node-batch-size&quot;</span><span class="p">]:</span>
+                    <span class="n">user_submit_params</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;-n&quot;</span><span class="p">,</span> <span class="s2">&quot;--max-nodes&quot;</span><span class="p">]:</span>
+                    <span class="n">user_submit_params</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;-q&quot;</span><span class="p">,</span> <span class="s2">&quot;--num-processes&quot;</span><span class="p">]:</span>
+                    <span class="n">user_submit_params</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;-p&quot;</span><span class="p">,</span> <span class="s2">&quot;--poll-interval&quot;</span><span class="p">]:</span>
+                    <span class="n">user_submit_params</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">user_submit_params</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">auto_config_cmds</span><span class="p">):</span>
+            <span class="n">stage_num</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;stages&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;auto_config_cmd&quot;</span><span class="p">:</span> <span class="n">cmd</span><span class="p">,</span>
+                    <span class="s2">&quot;config_file&quot;</span><span class="p">:</span> <span class="n">PipelineManager</span><span class="o">.</span><span class="n">get_stage_config_file_name</span><span class="p">(</span><span class="n">stage_num</span><span class="p">),</span>
+                    <span class="s2">&quot;submit-params&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;--max-nodes&quot;</span><span class="p">:</span> <span class="n">DEFAULTS</span><span class="p">[</span><span class="s2">&quot;max_nodes&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;--per-node-batch-size&quot;</span><span class="p">:</span> <span class="n">DEFAULTS</span><span class="p">[</span><span class="s2">&quot;per_node_batch_size&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;--num-processes&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;stages&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;submit-params&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">user_submit_params</span><span class="p">)</span>
+
+        <span class="n">dump_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Created pipeline config file </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PipelineManager.submit"><a class="viewcode-back" href="../../../jade/jade.jobs.html#jade.jobs.pipeline_manager.PipelineManager.submit">[docs]</a>    <span class="nd">@timed_info</span>
+    <span class="k">def</span> <span class="nf">submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Submit the pipeline for execution.&quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start execution pipeline </span><span class="si">%s</span><span class="s2"> num_stages=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_config_file</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stages</span><span class="p">))</span>
+
+        <span class="c1"># There is a challenge in passing the information that each possible</span>
+        <span class="c1"># stage/extension might require. This solution attempts to be as</span>
+        <span class="c1"># flexible as possible without requiring a specific interface.</span>
+        <span class="c1">#</span>
+        <span class="c1"># Set these environment variables so that the auto-config scripts</span>
+        <span class="c1"># can extract information they need to create execution script</span>
+        <span class="c1"># arguments.</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JADE_PIPELINE_OUTPUT_DIR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JADE_PIPELINE_STATUS_FILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status_file</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_submit</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;JADE_PIPELINE_OUTPUT_DIR&quot;</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;JADE_PIPELINE_STATUS_FILE&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;JADE_PIPELINE_STAGE_ID&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;JADE_PIPELINE_STAGE_ID&quot;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">stage</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stages</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JADE_PIPELINE_STAGE_ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span><span class="p">)</span>
+            <span class="n">stage_info</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;stage_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span><span class="p">,</span>
+                <span class="s2">&quot;output_directory&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_stage_output_path</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span>
+                <span class="p">)</span>
+            <span class="p">}</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_status_info</span><span class="p">[</span><span class="s2">&quot;stages&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stage_info</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dump_status</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_run_auto_config</span><span class="p">(</span><span class="n">stage</span><span class="p">)</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_submit_cmd</span><span class="p">(</span><span class="n">stage</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">run_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">exec_time</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">Result</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span><span class="p">),</span> <span class="n">ret</span><span class="p">,</span> <span class="s2">&quot;finished&quot;</span><span class="p">,</span> <span class="n">exec_time</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_status_info</span><span class="p">[</span><span class="s2">&quot;stages&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;result&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">serialize_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_dump_status</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">ret</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ExecutionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stage </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span><span class="si">}</span><span class="s2"> failed&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Finished execution pipeline&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_dump_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_status_info</span><span class="p">[</span><span class="s2">&quot;current_stage_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span>
+        <span class="n">dump_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_status_info</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status_file</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_run_auto_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stage</span><span class="p">):</span>
+        <span class="n">config_file</span> <span class="o">=</span> <span class="n">stage</span><span class="p">[</span><span class="s2">&quot;config_file&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_file</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+
+        <span class="n">auto_config_cmd</span> <span class="o">=</span> <span class="n">stage</span><span class="p">[</span><span class="s2">&quot;auto_config_cmd&quot;</span><span class="p">]</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">run_command</span><span class="p">(</span><span class="n">auto_config_cmd</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ret</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ExecutionError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Failed to auto-config stage </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">ret</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_file</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">ExecutionError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;auto-config stage </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span><span class="si">}</span><span class="s2"> did not produce </span><span class="si">{</span><span class="n">config_file</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">final_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_stage_config_file_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span><span class="p">)</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">final_file</span><span class="p">)</span>
+        <span class="n">stage</span><span class="p">[</span><span class="s2">&quot;config_file&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">final_file</span>
+
+    <span class="k">def</span> <span class="nf">_make_submit_cmd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stage</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+        <span class="n">stage_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_stage_output_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cur_stage_id</span><span class="p">)</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;jade submit-jobs </span><span class="si">{</span><span class="n">stage</span><span class="p">[</span><span class="s1">&#39;config_file&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> -o </span><span class="si">{</span><span class="n">stage_output</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">stage</span><span class="p">[</span><span class="s2">&quot;submit-params&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="n">cmd</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cmd</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="n">cmd</span> <span class="o">+=</span> <span class="s2">&quot; --verbose&quot;</span>
+
+        <span class="k">return</span> <span class="n">cmd</span>
+
+<div class="viewcode-block" id="PipelineManager.get_stage_config_file_name"><a class="viewcode-back" href="../../../jade/jade.jobs.html#jade.jobs.pipeline_manager.PipelineManager.get_stage_config_file_name">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_stage_config_file_name</span><span class="p">(</span><span class="n">stage_num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the filename of a stage config file.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;config-stage</span><span class="si">{</span><span class="n">stage_num</span><span class="si">}</span><span class="s2">.json&quot;</span></div>
+
+<div class="viewcode-block" id="PipelineManager.get_stage_config_file_path"><a class="viewcode-back" href="../../../jade/jade.jobs.html#jade.jobs.pipeline_manager.PipelineManager.get_stage_config_file_path">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_stage_config_file_path</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">stage_num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the path to a stage config file.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">PipelineManager</span><span class="o">.</span><span class="n">get_stage_config_file_name</span><span class="p">(</span><span class="n">stage_num</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="PipelineManager.get_stage_output_name"><a class="viewcode-back" href="../../../jade/jade.jobs.html#jade.jobs.pipeline_manager.PipelineManager.get_stage_output_name">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_stage_output_name</span><span class="p">(</span><span class="n">stage_num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the output directory name of a stage.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;output-stage</span><span class="si">{</span><span class="n">stage_num</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+<div class="viewcode-block" id="PipelineManager.get_stage_output_path"><a class="viewcode-back" href="../../../jade/jade.jobs.html#jade.jobs.pipeline_manager.PipelineManager.get_stage_output_path">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_stage_output_path</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">stage_num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the path to the output directory of a stage.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">PipelineManager</span><span class="o">.</span><span class="n">get_stage_output_name</span><span class="p">(</span><span class="n">stage_num</span><span class="p">))</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, NREL
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Python" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial &mdash; jade 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Batch Pipeline" href="pipeline.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> jade
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#computer-or-hpc-with-conda">Computer or HPC with conda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#computer-with-docker">Computer with docker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hpc-configuration">HPC Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-jobs">Configuring Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-execution">CLI Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#job-results">Job Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline.html">Batch Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html#create-the-pipeline">Create the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html#customize-the-config">Customize the config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html#submit-the-pipeline">Submit the pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_usage.html">Advanced Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced_usage.html#extending-jade">Extending JADE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_usage.html#generic-command-extension">Generic Command Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_usage.html#demo-extension">Demo Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced_usage.html#post-process">Post-process</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Dev &amp; Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="jade.html">jade</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jade/modules.html">jade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jade/jade.html">jade package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">JADE Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="design/classes.html">JADE Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="build_docs.html">Building the Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="build_docs.html#build-locally">Build locally</a></li>
+<li class="toctree-l2"><a class="reference internal" href="build_docs.html#push-to-github">Push to GitHub</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">jade</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This page describes how to use the JADE package to create, modify, and run
+jobs locally or on HPC.</p>
+<div class="section" id="hpc-configuration">
+<h2>HPC Configuration<a class="headerlink" href="#hpc-configuration" title="Permalink to this headline">¶</a></h2>
+<p>This section only applies if you run your jobs on HPC.</p>
+<div class="section" id="hpc-parameters">
+<h3>HPC Parameters<a class="headerlink" href="#hpc-parameters" title="Permalink to this headline">¶</a></h3>
+<p>JADE will submit jobs to the HPC with parameters defined in
+<code class="docutils literal notranslate"><span class="pre">hpc_config.toml</span></code>.  Create a copy and customize according to your needs.</p>
+</div>
+<div class="section" id="lustre-filesystem">
+<h3>Lustre Filesystem<a class="headerlink" href="#lustre-filesystem" title="Permalink to this headline">¶</a></h3>
+<p>If you are running on a Lustre filesystem then you should consider whether to
+configure the Lustre stripe count. This can be beneficial if the the files you
+create will be large or if many clients will be accessing them concurrently.</p>
+<p>References:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://wiki.lustre.org/Configuring_Lustre_File_Striping">http://wiki.lustre.org/Configuring_Lustre_File_Striping</a></p></li>
+<li><p><a class="reference external" href="https://www.nics.tennessee.edu/computing-resources/file-systems/lustre-striping-guide">https://www.nics.tennessee.edu/computing-resources/file-systems/lustre-striping-guide</a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example Lustre filesystem command will only work if the directory is
+empty.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lfs setstripe -c <span class="m">16</span> &lt;run-directory&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="prerequistes">
+<h3>Prerequistes<a class="headerlink" href="#prerequistes" title="Permalink to this headline">¶</a></h3>
+<p>If you are not using the JADE conda environment then you should take note of
+the packages it installs (environment.yml). One common pitfall is that JADE
+requires a newer version of git than some users have.</p>
+</div>
+</div>
+<div class="section" id="configuring-jobs">
+<h2>Configuring Jobs<a class="headerlink" href="#configuring-jobs" title="Permalink to this headline">¶</a></h2>
+<p>A JADE configuration contains a list of jobs to run. Configurations can also be
+created manually or programmatically. JADE implements a CLI command to simplify
+the interface for the commonly-executed  <code class="docutils literal notranslate"><span class="pre">generic_command</span></code> extension behind.</p>
+<div class="section" id="job-commands">
+<h3>Job Commands<a class="headerlink" href="#job-commands" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade config create &lt;commands-file&gt; -c config.json
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">commands-file</span></code> is a text file with a list of commands to execute and
+JADE will run them in parallel. <code class="docutils literal notranslate"><span class="pre">config.json</span></code> contains each job definition.</p>
+</div>
+<div class="section" id="job-ordering">
+<h3>Job Ordering<a class="headerlink" href="#job-ordering" title="Permalink to this headline">¶</a></h3>
+<p>Each job defines a <code class="docutils literal notranslate"><span class="pre">blocked_by</span></code> field. If you want to guarantee that job ID
+2 doesn't run until job ID 1 completes then add that ID to the field.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;job_cli_command1&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;blocked_by&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">},</span>
+<span class="p">{</span>
+  <span class="s2">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;job_cli_command2&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s2">&quot;blocked_by&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">},</span>
+<span class="p">{</span>
+  <span class="s2">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;job_cli_command3&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="s2">&quot;blocked_by&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">},</span>
+<span class="p">{</span>
+  <span class="s2">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;job_cli_command4&gt;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s2">&quot;blocked_by&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-extension-optional">
+<h3>Custom Extension (Optional)<a class="headerlink" href="#custom-extension-optional" title="Permalink to this headline">¶</a></h3>
+<p>If you are creating a customized JADE extension, it is recommended to provide
+an <code class="docutils literal notranslate"><span class="pre">auto-confg</span></code> method that will automatically create a configuration with
+all possible jobs.  If that is in place then this command will create the
+configuration.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade auto-config &lt;extension-name&gt; &lt;input_path&gt; -c config.json
+</pre></div>
+</div>
+<p>For more details about how to create a custom extension, please refer to
+<a class="reference internal" href="advanced_usage.html#advanced-guide-label"><span class="std std-ref">Advanced Usage</span></a>.</p>
+</div>
+</div>
+<div class="section" id="cli-execution">
+<h2>CLI Execution<a class="headerlink" href="#cli-execution" title="Permalink to this headline">¶</a></h2>
+<p>Jade provides a CLI utility to start jobs.</p>
+<div class="section" id="submit-jobs">
+<h3>submit-jobs<a class="headerlink" href="#submit-jobs" title="Permalink to this headline">¶</a></h3>
+<p>Start execution of jobs defined in a configuration file.  If executed on HPC
+this will submit the jobs to the HPC queue. Otherwise, it will run the jobs
+locally.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If running on the HPC then you should start jobs from a <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> or <a class="reference external" href="https://www.gnu.org/software/screen">screen</a> session so that the job manager
+stays alive if you disconnect from the network.</p>
+</div>
+<p>It's important to understand how JADE submits HPC jobs in order to optimize
+your performance.  JADE divides the jobs created by the user into batches.  It
+makes one HPC node submission for each batch. Once running on a node it runs in
+parallel a number of worker processes equal to the number of CPUs on that node
+(36 on Eagle).</p>
+<p>Parameters to keep in mind:</p>
+<ul class="simple">
+<li><p><strong>Number of jobs</strong>: Number of jobs created by the user.</p></li>
+<li><p><strong>Max nodes</strong>: Max number of job submissions (batches) to run in parallel.</p></li>
+<li><p><strong>Per-node batch size</strong>: Number of jobs to run on one node in one batch.</p></li>
+<li><p><strong>Allocation time</strong>: How long it takes to acquire a node. Dependent on the
+HPC queue chosen and the priority given.</p></li>
+<li><p><strong>Average job runtime</strong>: How long it takes a job to complete.</p></li>
+<li><p><strong>HPC config file</strong>: Customized HPC parameters like walltime and partition</p></li>
+</ul>
+<p>If the jobs are very quick to execute and it takes a long time to acquire a
+node then you may be better off making per_node_batch_size higher and max_nodes
+lower.</p>
+<p>Conversely, if the jobs take a long time then you may want to do the opposite.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">jade</span> <span class="pre">submit-jobs</span> <span class="pre">--help</span></code> to see defaults.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Use defaults.
+$ jade submit-jobs config.json
+
+# Specify options.
+$ jade submit-jobs config.json \
+    --output=output \
+    --max-nodes=20 \
+    --per-node-batch-size=500 \
+    --hpc-config=hpc_config.toml
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default HPC nodes are requested at normal priority. Set qos=high in
+hpc_config.toml to get faster allocations at twice the cost.</p>
+</div>
+</div>
+</div>
+<div class="section" id="job-results">
+<h2>Job Results<a class="headerlink" href="#job-results" title="Permalink to this headline">¶</a></h2>
+<p>View the results of the jobs.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade show-results --output<span class="o">=</span>output
+</pre></div>
+</div>
+<p>Or only the ones that failed</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade show-results --failed
+</pre></div>
+</div>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>By default JADE generates report files that summarize what happened. Refer to
+<code class="docutils literal notranslate"><span class="pre">results.txt</span></code>, <code class="docutils literal notranslate"><span class="pre">errors.txt</span></code>, and <code class="docutils literal notranslate"><span class="pre">stats.txt</span></code>. The results file shows
+whether each job passed or failed.  The errors file shows unhandled errors
+that JADE detected as well as known errors that it parsed from log files.</p>
+<p>Here are the log files that JADE generates. Open these to dig deeper.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">submit_jobs.log</span></code>: HPC-related information, such as the job ID and status</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_jobs.log</span></code>: information about JADE starting and stopping jobs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">job_output_&lt;HPC</span> <span class="pre">job</span> <span class="pre">ID&gt;.e</span></code>: The HPC logs stdout and stderr from all
+processes to this file. Look here to debug unexpected crashes or hangs.</p>
+<ul>
+<li><p>Python crashes will print <code class="docutils literal notranslate"><span class="pre">Traceback</span></code> to stderr, so that is a good string
+to search for.</p></li>
+<li><p>Search for SLURM errors:  <code class="docutils literal notranslate"><span class="pre">srun</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmstepd</span></code>, <code class="docutils literal notranslate"><span class="pre">DUE</span> <span class="pre">TO</span> <span class="pre">TIME</span> <span class="pre">LIMIT</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ find output -name <span class="s2">&quot;*.log&quot;</span> -o -name <span class="s2">&quot;*.e&quot;</span>
+output/J1__3__1.15__1.0__deployment1.dss/logs/deployment1.dss_simulation.log
+output/J1__3__1.15__1.0__deployment1.dss/pydss-project/Logs/pydss-project_deployment1.dss.log
+output/submit_jobs.log
+output/job_output_1151157.e
+</pre></div>
+</div>
+<p>Useful grep commands</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grep <span class="s2">&quot;WARNING\|ERROR&quot;</span> output/*log
+$ grep -n <span class="s2">&quot;srun\|slurmstepd\|Traceback&quot;</span> output/*.e
+</pre></div>
+</div>
+<div class="section" id="events">
+<h3>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
+<p>If your extension implements JADE structured log events then you may want to
+view what events were logged.</p>
+<p>JADE will also log any unhandled exceptions here.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade show-events
+$ jade show-events -c Error
+</pre></div>
+</div>
+</div>
+<div class="section" id="resource-monitoring">
+<h3>Resource Monitoring<a class="headerlink" href="#resource-monitoring" title="Permalink to this headline">¶</a></h3>
+<p>JADE automatically monitors CPU, disk, memory, and network utilization
+statistics in structured log events.  Use this CLI command to view them,</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ jade stats show
+$ jade stats show cpu
+$ jade stats show disk
+$ jade stats show mem
+$ jade stats show net
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reads and writes to the Lustre filesystem on the HPC are not tracked.</p>
+</div>
+<p>The stats can also be provided as pandas.DataFrame objects. For example, here
+is how to view CPU stats for the node that ran the first batch:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">jade.events</span> <span class="kn">import</span> <span class="n">EventsSummary</span><span class="p">,</span> <span class="n">EVENT_NAME_CPU_STATS</span>
+<span class="kn">from</span> <span class="nn">jade.resource_monitor</span> <span class="kn">import</span> <span class="n">CpuStatsViewer</span>
+
+<span class="n">summary</span> <span class="o">=</span> <span class="n">EventsSummary</span><span class="p">(</span><span class="s2">&quot;output&quot;</span><span class="p">)</span>
+<span class="n">viewer</span> <span class="o">=</span> <span class="n">CpuStatsViewer</span><span class="p">(</span><span class="n">summary</span><span class="o">.</span><span class="n">events</span><span class="p">)</span>
+<span class="n">cpu_df</span> <span class="o">=</span>  <span class="n">viewer</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">(</span><span class="s2">&quot;resource_monitor_batch_0&quot;</span><span class="p">)</span>
+<span class="n">cpu_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pipeline.html" class="btn btn-neutral float-right" title="Batch Pipeline" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, NREL
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
